@@ -14,7 +14,8 @@ public class Role {
     @Column
     private String name;
 
-    public Role() {}
+    public Role() {
+    }
 
     public String getName() {
         return name;

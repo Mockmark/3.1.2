@@ -16,7 +16,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity
-@EnableMethodSecurity // Needed for @PreAuthorize in UserController
+@EnableMethodSecurity
 public class WebSecurityConfig {
 
     private final CustomLoginSuccessHandler successHandler;

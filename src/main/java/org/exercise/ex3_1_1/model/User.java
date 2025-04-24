@@ -30,10 +30,10 @@ public class User implements UserDetails {
     private int age;
 
     @Column
-    String password;
+    private String password;
 
     @Column(name = "username", unique = true)
-    String username;
+    private String username;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

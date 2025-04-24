@@ -28,5 +28,4 @@ public class RoleServiceImpl implements RoleService {
         return roleRepository.findById(id).orElseThrow(() -> new RuntimeException("Role not found"));
     }
 
-
 }

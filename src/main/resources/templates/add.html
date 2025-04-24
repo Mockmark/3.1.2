@@ -33,7 +33,7 @@
 <body class="container">
 <a th:href="@{/admin/index}">Return</a>
 <br>
-<form th:method="POST" th:action="@{/admin/index}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin/add}" th:object="${user}">
 
     <label for="name">Name</label>
     <input type="text" th:field="*{name}" id="name" name="name" placeholder="Enter your name">
