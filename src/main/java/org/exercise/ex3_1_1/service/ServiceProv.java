@@ -25,5 +25,5 @@ public interface ServiceProv {
 
     void passwordEnsure(User user);
 
-    void passwordEnsure(User user, User existingUser);
+    void passwordEnsureExtra(User user);
 }

@@ -28,6 +28,7 @@ public class UserService implements ServiceProv {
     @Transactional
     public void addUser(User user) {
         roleRehydration(user);
+        passwordEnsure(user);
         userDao.save(user);
     }
 
@@ -48,7 +49,8 @@ public class UserService implements ServiceProv {
 
     @Override
     @Transactional
-    public void passwordEnsure(User user, User existingUser) {
+    public void passwordEnsureExtra(User user) {
+        User existingUser = getUserById(user.getId());
         if (!user.getPassword().equals(existingUser.getPassword())) {
             user.setPassword(passwordEncoder.encode(user.getPassword()));
         }
@@ -70,6 +72,7 @@ public class UserService implements ServiceProv {
     @Transactional
     public void updateUser(User user) {
         roleRehydration(user);
+        passwordEnsureExtra(user);
         userDao.save(user);
     }
 

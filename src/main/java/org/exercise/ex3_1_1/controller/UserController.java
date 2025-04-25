@@ -47,7 +47,6 @@ public class UserController {
             model.addAttribute("allRoles", roleService.findAll());
             return "add";
         }
-        userService.passwordEnsure(user);
         userService.addUser(user);
         return "redirect:/admin/index";
     }
@@ -68,9 +67,6 @@ public class UserController {
 
     @PostMapping(value = "/edit")
     public String updateUser(@ModelAttribute("userToEdit") User user, ModelMap model) {
-        User existingUser = userService.getUserById(user.getId());
-        userService.passwordEnsure(user, existingUser);
-
         Optional<User> userWithSameUsername = userService.findByUsername(user.getUsername());
         if (userWithSameUsername.isPresent() && !(userWithSameUsername.get().getId() == (user.getId()))) {
             model.addAttribute("errorMessage", "Username already exists.");
@@ -78,7 +74,6 @@ public class UserController {
             model.addAttribute("allRoles", roleService.findAll());
             return "edit";
         }
-
         userService.updateUser(user);
         return "redirect:/admin/index";
     }
